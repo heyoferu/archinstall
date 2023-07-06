@@ -67,7 +67,13 @@ clear
 
 #DECLARAR USUARIOS Y CONTRASEÑAS EN MODO CLEAN PARA NO FALLAR
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
-echo "print devices" | parted | grep /dev/ | awk '{if (NR!=1) {print}}'
+disknumer=$(lsblk -d -o PATH --noheadings | sort -u | wc -l)
+for (( counter=1; counter<=$disknumer; counter++ ))
+do
+    echo -e " $counter) $(lsblk -d -o PATH --noheadings | sed -n "${counter}p")"
+done
+read -p "$(echo "Selecciona el disco para instalar (debe ser el número): ")" ndisk
+disco=$(lsblk -d -o PATH --noheadings | sed -n "${ndisk}p")
 echo ''
 read -p "$(echo -e "\e[96mIntroduce tu disco a instalar Arch: \e[0m")" disco
 echo ""
