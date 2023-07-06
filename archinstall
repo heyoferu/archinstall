@@ -91,7 +91,13 @@ done
 read -p "$(echo "Selecioné su idioma con el numéro: ")" nloc
 userpais=${ubicaciones[nloc-1]}
 echo ""
-read -p "$(echo -e "\e[96mIntroduce la distribucion de tu teclado, Ejemplo (es / latam / us): \e[0m")" teclado
+distkb=("es" "latam" "us")
+for (( counter=1; counter<=${#distkb[@]}; counter++))
+do
+    echo -e "$counter) ${distkb[counter-1]}"
+done
+read -p "$(echo "Selecioné su idioma con el numéro: ")" nkb
+teclado=${distkb[nkb-1]}
 echo ""
 echo "Selección de Disco: $disco"
 echo ''
