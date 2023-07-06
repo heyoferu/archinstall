@@ -13,8 +13,8 @@ sed -i "93i [multilib]" /etc/pacman.conf
 sed -i "94i Include = /etc/pacman.d/mirrorlist" /etc/pacman.conf
 
 # INSTALACIÓN DE PLASMA
-pacman -S plasma kdeconnect --noconfirm --needed
-systemctl enable --now sddm
+# pacman -S plasma --noconfirm --needed
+# systemctl enable --now sddm
 sleep 2
 
 #INSTALACION DE WIFI
@@ -28,22 +28,22 @@ pacman -S bluez bluez-utils --noconfirm
 
 #ACTIVAR SERVICIOS
 systemctl enable dhcpcd NetworkManager ntpd
-systemctl enable bluetooth.service"
+systemctl enable bluetooth.service
 
-echo "noipv6rs" >> /etc/dhcpcd.conf
-echo "noipv6" >> /etc/dhcpcd.conf
+# echo "noipv6rs" >> /etc/dhcpcd.conf
+# echo "noipv6" >> /etc/dhcpcd.conf
 
 #SHELL
-pacman -S zsh-autosuggestions zsh-history-substring-search zsh-completions zsh-syntax-highlighting zsh --noconfirm
+pacman -S zsh zsh-autosuggestions zsh-history-substring-search zsh-completions zsh-syntax-highlighting zsh --noconfirm
 
 #INSTALACION DE SERVIDOR X
 #pacman -S xorg-server xorg-apps xorg-xinit --noconfirm
 
 #UTILIDADES
-pacman -S neofetch p7zip unrar zip unzip gzip bzip2 lzop git wget lsb-release xdg-user-dirs android-tools android-udev libmtp libcddb gvfs gvfs-afc gvfs-smb gvfs-gphoto2 gvfs-mtp gvfs-goa gvfs-nfs dosfstools jfsutils f2fs-tools btrfs-progs exfat-utils ntfs-3g reiserfsprogs xfsprogs nilfs-utils polkit gpart mtools ffmpeg aom libde265 x265 x264 libmpeg2 xvidcore libtheora libvpx schroedinger sdl gstreamer gst-plugins-bad gst-plugins-base gst-plugins-base-libs gst-plugins-good gst-plugins-ugly xine-lib lame pacman-contrib usbutils make gcc curl nvtop htop vim fuse less man
+pacman -S neofetch p7zip unrar zip unzip gzip bzip2 lzop git wget lsb-release android-tools libmtp libcddb gvfs gvfs-afc gvfs-smb gvfs-gphoto2 gvfs-mtp gvfs-goa gvfs-nfs dosfstools jfsutils f2fs-tools btrfs-progs exfat-utils ntfs-3g reiserfsprogs xfsprogs nilfs-utils polkit gpart mtools ffmpeg aom libde265 x265 x264 libmpeg2 xvidcore libtheora libvpx schroedinger sdl gstreamer gst-plugins-bad gst-plugins-base gst-plugins-base-libs gst-plugins-good gst-plugins-ugly xine-lib lame pacman-contrib usbutils make gcc curl nvtop htop vim fuse less man
 
 # PERSONALIZADO 
-pacman -S  flatpak obs-studio spotify-launcher inkscape libreoffice-fresh-es firefox neovim telegram-desktop discord --noconfirm  -needed
+pacman -S kdeconnect flatpak obs-studio spotify-launcher inkscape libreoffice-fresh-es firefox neovim telegram-desktop discord --noconfirm  -needed
 
 xdg-user-dirs-update
 
@@ -55,15 +55,15 @@ pacman -S ttf-dejavu ttf-liberation xorg-fonts-type1 ttf-bitstream-vera gnu-free
 
       
 # INSTALAR PARU	(AUR HELPER)
-echo "cd && git clone https://aur.archlinux.org/paru-bin.git && cd paru-bin && makepkg -si --noconfirm && cd && rm -rf paru-bin" | su $user"
-sed -i "82c %wheel ALL=(ALL) ALL"  /etc/sudoers
+# echo "cd && git clone https://aur.archlinux.org/paru-bin.git && cd paru-bin && makepkg -si --noconfirm && cd && rm -rf paru-bin" | su $user
+# sed -i "82c %wheel ALL=(ALL) ALL"  /etc/sudoers
 
 pacman -S xf86-video-intel vulkan-intel mesa lib32-mesa intel-media-driver libva-intel-driver libva-vdpau-driver libvdpau-va-gl libva-utils vdpauinfo intel-compute-runtime clinfo ocl-icd lib32-ocl-icd opencl-headers
-clear
+
 neofetch
-sleep 5
+sleep 2
 uname -r 
-sleep 3
-clear 
+sleep 2
+ 
 echo "Arch Linux instalado"
-sleep 5
+sleep 2
