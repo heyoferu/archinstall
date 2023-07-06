@@ -75,8 +75,6 @@ done
 read -p "$(echo "Selecciona el disco para instalar (debe ser el número): ")" ndisk
 disco=$(lsblk -d -o PATH --noheadings | sed -n "${ndisk}p")
 echo ''
-read -p "$(echo -e "\e[96mIntroduce tu disco a instalar Arch: \e[0m")" disco
-echo ""
 read -p "$(echo -e "\e[92mIntroduce NOMBRE DEL EQUIPO (host): \e[0m")" hostname
 echo ""
 read -p "$(echo -e "\e[91mIntroduce la clave ROOT: \e[0m")" rootpasswd
@@ -85,7 +83,13 @@ read -p "$(echo -e "\e[92mIntroduce Nombre de USUARIO Nuevo: \e[0m")" user
 echo ""
 read -p "$(echo -e "\e[91mIntroduce la CLAVE de $user: \e[0m")" userpasswd
 echo ""
-read -p "$(echo -e "\e[96mIntroduce tu ubicación, Ejemplo (es_PE.UTF-8 / es_MX.UTF-8 / es_AR.UTF-8): \e[0m")" userpais
+ubicaciones=("es_PE.UTF-8" "es_MX.UTF-8" "es_AR.UTF-8")
+for (( counter=1; counter<=${#ubicaciones[@]}; counter++))
+do
+    echo -e "$counter) ${ubicaciones[counter-1]}"
+done
+read -p "$(echo "Selecioné su idioma con el numéro: ")" nloc
+userpais=${ubicaciones[nloc-1]}
 echo ""
 read -p "$(echo -e "\e[96mIntroduce la distribucion de tu teclado, Ejemplo (es / latam / us): \e[0m")" teclado
 echo ""
