@@ -291,7 +291,7 @@ echo '> Confirme tener la carpeta de GRUB para el arranque'
 sleep 2
 
 # INSTALACIÓN DE PLASMA
-arch-chroot /mnt /bin/bash -c "sudo pacman -S plasma kdeconnect --noconfirm --needed"
+arch-chroot /mnt /bin/bash -c "pacman -S plasma kdeconnect --noconfirm --needed"
 arch-chroot /mnt /bin/bash -c "systemctl enable --now sddm"
 sleep 2
 
