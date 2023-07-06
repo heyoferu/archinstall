@@ -38,17 +38,18 @@ echo " ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  
                                                                                       
 sleep 4
 
-#CAMBIAR EL LIVEUB A ESPAÑOL
+# CONFIGURACIÓN EN ESPAÑOL
 clear
 echo ""
-echo "Sistema en español"
+echo "Configurando el idioma a Español..."
 echo ""
-echo "es_ES.UTF-8 UTF-8" > /etc/locale.gen
+echo "es_MX.UTF-8 UTF-8" > /etc/locale.gen
 locale-gen
-echo "LANG=es_ES.UTF-8" > /etc/locale.conf
-export LANG=es_ES.UTF-8
+echo "LANG=es_MX.UTF-8" > /etc/locale.conf
+export LANG=es_MX.UTF-8
 echo ""
 sleep 2
+
 
 #ACTUALIZACION DE LLAVES Y MIRRORLIST
 clear
