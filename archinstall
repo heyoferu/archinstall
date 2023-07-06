@@ -260,7 +260,7 @@ sleep 2
 clear
 
 #INSTALACION DE KERNEL
-arch-chroot /mnt /bin/bash -c "pacman -S linux-lts linux-firmware linux-lts-headers mkinitcpio --noconfirm"
+arch-chroot /mnt /bin/bash -c "pacman -S linux linux-firmware linux-headers mkinitcpio --noconfirm"
 
 #INSTALACION GNOME MINIMAL
 #arch-chroot /mnt /bin/bash -c "pacman -S gnome-shell gdm gnome-control-center gnome-backgrounds gnome-tweaks --noconfirm"
