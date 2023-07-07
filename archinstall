@@ -13,7 +13,7 @@ sed -i "93i [multilib]" /etc/pacman.conf
 sed -i "94i Include = /etc/pacman.d/mirrorlist" /etc/pacman.conf
 
 # INSTALACIÓN DE PLASMA
-# pacman -S plasma --noconfirm --needed
+pacman -S plasma-desktop plasma --noconfirm --needed
 # systemctl enable --now sddm
 sleep 2
 
@@ -40,15 +40,19 @@ pacman -S zsh zsh-autosuggestions zsh-history-substring-search zsh-completions z
 #pacman -S xorg-server xorg-apps xorg-xinit --noconfirm
 
 #UTILIDADES
-pacman -S neofetch p7zip unrar zip unzip gzip bzip2 lzop git wget lsb-release android-tools libmtp libcddb gvfs gvfs-afc gvfs-smb gvfs-gphoto2 gvfs-mtp gvfs-goa gvfs-nfs dosfstools jfsutils f2fs-tools btrfs-progs exfat-utils ntfs-3g reiserfsprogs xfsprogs nilfs-utils polkit gpart mtools ffmpeg aom libde265 x265 x264 libmpeg2 xvidcore libtheora libvpx schroedinger sdl gstreamer gst-plugins-bad gst-plugins-base gst-plugins-base-libs gst-plugins-good gst-plugins-ugly xine-lib lame pacman-contrib usbutils make gcc curl nvtop htop vim fuse less man
+pacman -S neofetch p7zip unrar zip unzip gzip bzip2 lzop git wget lsb-release android-tools libmtp libcddb gvfs gvfs-afc gvfs-smb gvfs-gphoto2 gvfs-mtp gvfs-goa gvfs-nfs dosfstools jfsutils f2fs-tools btrfs-progs exfat-utils ntfs-3g reiserfsprogs xfsprogs nilfs-utils polkit gpart mtools ffmpeg aom libde265 x265 x264 libmpeg2 xvidcore libtheora libvpx schroedinger sdl gstreamer gst-plugins-bad gst-plugins-base gst-plugins-base-libs gst-plugins-good gst-plugins-ugly xine-lib lame pacman-contrib usbutils make gcc curl nvtop htop vim fuse less man --noconfirm
 
 # PERSONALIZADO 
-pacman -S kdeconnect flatpak obs-studio spotify-launcher inkscape libreoffice-fresh-es firefox neovim telegram-desktop discord --noconfirm  -needed
+pacman -S kdeconnect flatpak obs-studio spotify-launcher inkscape libreoffice-fresh-es firefox neovim telegram-desktop discord --noconfirm
 
 xdg-user-dirs-update
 
 #AUDIO
-pacman -S pipewire gst-plugin-pipewire pipewire-alsa pipewire-jack pipewire-media-session pipewire-pulse pipewire-zeroconf --noconfirm
+pacman -S pipewire gst-plugin-pipewire pipewire-alsa pipewire-jack pipewire-media-session pipewire-pulse pipewire-zeroconf
+systemctl --user enable pipewire pipewire-pulse pipewire-media-session
+echo "options snd-hda-intel model=generic" > /etc/modprobe.d/alsa-base.conf
+echo "install snd-intel8x0m /bin/true" > /etc/modprobe.d/blacklist.conf 
+echo "options snd-intel-dspcfg dsp_driver=1" > /etc/modprobe.d/soundfix.conf 
 
 #FONTS (TIPOGRAFIAS)
 pacman -S ttf-dejavu ttf-liberation xorg-fonts-type1 ttf-bitstream-vera gnu-free-fonts --noconfirm
